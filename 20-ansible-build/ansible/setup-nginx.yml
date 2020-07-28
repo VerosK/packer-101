@@ -1,0 +1,13 @@
+- name: Setup web server
+  hosts: webservers
+
+  tasks:
+    - name: Install nginx
+      package:
+        name: nginx
+        state: present
+
+    - name: Autostart nginx
+      service:
+        name: nginx
+        enabled: true
