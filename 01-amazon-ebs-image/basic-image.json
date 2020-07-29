@@ -1,0 +1,42 @@
+{
+  "variables": {
+    "aws_region": "eu-central-1",
+    "build_user": "{{env `USER`}}"
+  },
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "region": "{{user `aws_region`}}",
+      "source_ami_filter": {
+        "filters": {
+          "virtualization-type": "hvm",
+          "name": "ubuntu/images/*ubuntu-xenial-16.04-amd64-server-*",
+          "root-device-type": "ebs"
+        },
+        "owners": [
+          "099720109477"
+        ],
+        "most_recent": true
+      },
+      "instance_type": "t2.micro",
+      "ssh_username": "ubuntu",
+      "ami_name": "packer-example {{timestamp}}",
+      "force_delete_snapshot": true,
+      "force_deregister": true,
+      "tags": {
+        "Name": "Webserver example {{timestamp}}",
+        "build_user": "{{user `build_user`}}"
+      }
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "sudo apt update",
+        "sudo apt install -y python"
+      ]
+    }
+  ]
+}
+
