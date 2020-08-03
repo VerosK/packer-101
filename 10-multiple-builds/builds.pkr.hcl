@@ -1,3 +1,4 @@
+# builds
 
 build {
   sources = [
@@ -21,5 +22,12 @@ build {
       "sudo apt-get install -y python"
     ]
   }
+
+  post-processor "docker-tag" {
+    only = [ "docker.webserver" ]
+    repository = "localhost.demo"
+    tag = [ "latest"  ]
+  }
+
 }
 
