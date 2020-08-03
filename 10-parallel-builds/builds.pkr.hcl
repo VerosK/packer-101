@@ -6,15 +6,16 @@ build {
   ]
 
   provisioner "shell" {
-    only = [ "source.docker.webserver" ]
+    only = [ "docker.webserver" ]
     inline = [
+      "apt clean",
+      "apt update",
       "apt install sudo -y",
     ]
   }
 
   provisioner "shell" {
     inline = [
-      "apt install sudo -y",
       "sudo apt-get clean",
       "sudo apt-get update",
       "sudo apt-get install -y python"
