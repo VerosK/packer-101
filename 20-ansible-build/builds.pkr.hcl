@@ -8,7 +8,7 @@ build {
     inline = [
       "sudo apt-get clean",
       "sudo apt-get update",
-      "sudo apt-get install -y python"
+      "sudo apt-get install -y python3"
     ]
   }
 
@@ -20,8 +20,7 @@ build {
     extra_arguments = [
       "--become"
     ]
-    groups = [
-      "webservers"]
+    groups = [ "webservers" ]
     host_alias = "webserver"
     playbook_file = "ansible/setup-nginx.yml"
     user = "ubuntu"
