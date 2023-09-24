@@ -1,7 +1,7 @@
 
 
 source "docker" "webserver" {
-  image = "debian:9.5"
+  image = "ubuntu:22.04"
   commit = true
 
 }
