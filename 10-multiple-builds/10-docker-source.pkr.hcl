@@ -1,7 +1,7 @@
 
 
 source "docker" "webserver" {
-  image = "ubuntu:22.04"
+  image = "docker.io/library/ubuntu:jammy"
   commit = true
 
 }
