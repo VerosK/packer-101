@@ -34,7 +34,8 @@
       "type": "shell",
       "inline": [
         "sudo apt update",
-        "sudo apt install -y python3 python-is-python3"
+        "sleep 30",
+        "sudo apt install -y python3"
       ]
     }
   ]
